@@ -10,3 +10,6 @@ gem "pry"
 
 gem "require_all"
 gem "faker"
+
+#gem CLI
+gem 'tty-prompt'
