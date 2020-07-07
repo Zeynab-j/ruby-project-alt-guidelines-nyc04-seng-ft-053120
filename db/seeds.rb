@@ -52,21 +52,24 @@ TutoringSession.create([
     }
 ])
 
-# 5.times do
+5.times do
+
+    Teacher.create(
+        name: Faker::Name.name,
+        subject: Faker::ProgrammingLanguage.name
+    )
+
+    TutoringSession.create(
+        teacher_id: Teacher.all.sample.id,
+        student_id: nil,
+        review: nil,
+        time: ["1","2","3","4","5"].to_a.sample
+    )
+end
+
+
+
 #     Student.create(
 #         name: Faker::Name.name,
 #         age: (18..25).to_a.sample
 #     )
-
-#     Teacher.create(
-#         name: Faker::Name.name,
-#         subject: Faker::ProgrammingLanguage.name
-#     )
-
-#     TutoringSession.create(
-#         teacher_id: Teacher.all.sample.id,
-#         student_id: Student.all.sample.id,
-#         review: ["great","bad","Terrible","super"].to_a.sample,
-#         time: ["1","2","3","4","5"].to_a.sample
-#     )
-# end
