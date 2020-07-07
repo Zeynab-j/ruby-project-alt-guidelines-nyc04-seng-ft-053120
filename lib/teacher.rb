@@ -1,4 +1,4 @@
 class Teacher < ActiveRecord::Base
-    has_many :tutoringsessions
-    has_many :students, through: :tutoringsession
+    has_many :tutoring_sessions
+    has_many :students, through: :tutoring_sessions
 end
