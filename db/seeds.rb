@@ -53,8 +53,8 @@ TutoringSession.create([
 #     )
 
 #     TutoringSession.create(
-#         teacher_id: (1..10).to_a.sample,
-#         student_id: (1..10).to_a.sample,
+#         teacher_id: Teacher.all.sample.id,
+#         student_id: Student.all.sample.id,
 #         review: ["great","bad","Terrible","super"].to_a.sample,
 #         time: ["1","2","3","4","5"].to_a.sample
 #     )

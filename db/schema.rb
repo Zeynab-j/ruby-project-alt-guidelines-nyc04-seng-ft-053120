@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_155406) do
+ActiveRecord::Schema.define(version: 2020_07_07_123534) do
 
   create_table "students", force: :cascade do |t|
     t.string "name"
@@ -26,7 +26,8 @@ ActiveRecord::Schema.define(version: 2020_07_05_155406) do
     t.integer "teacher_id"
     t.integer "student_id"
     t.string "review"
-    t.string "time"
+    t.datetime "time"
+    t.integer "rating"
   end
 
 end
