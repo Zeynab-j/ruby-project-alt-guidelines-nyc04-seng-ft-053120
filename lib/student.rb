@@ -5,13 +5,16 @@ class Student < ActiveRecord::Base
     def self.new_student
         prompt = TTY::Prompt.new
         new_student = prompt.ask("Type in your username:")
-        Student.new(name: new_student)
+        new_age = prompt.ask("What is your age:")
+        Student.create(name: new_student, age: new_age )
+        # Check if name already exist if so then tell them if not create (find_by_create)
     end
 
     def self.returning
         prompt = TTY::Prompt.new
         user_name = prompt.ask("What is your name:")
-         user = Student.find_by(name: user_name)  
+         user = Student.find_by(name: user_name)
+         puts "Here is your Schedule"  
          p user.tutoring_sessions
      end
 
