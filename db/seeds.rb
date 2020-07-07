@@ -15,9 +15,11 @@ Student.create([
     }
 ])
 
+
+
 Teacher.create([
     {
-        name: "CLaire",
+        name: "Claire",
         subject: "Java"
     },
     {
@@ -31,13 +33,22 @@ TutoringSession.create([
         teacher_id: Teacher.first.id,
         student_id: Student.first.id,
         review: "Terrible",
-        time:   "2pm",
+        time:   nil,
+        rating: nil
     },
     {
         teacher_id: Teacher.second.id,
         student_id: Student.second.id,
         review: "OKAY",
-        time:   "5pm",
+        time:   nil,
+        rating: nil
+    },
+    {
+        teacher_id: Teacher.second.id,
+        student_id: Student.first.id,
+        review: "Terrible",
+        time:   nil,
+        rating: nil
     }
 ])
 

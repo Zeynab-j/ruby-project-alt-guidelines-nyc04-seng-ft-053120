@@ -1,6 +1,20 @@
 class Student < ActiveRecord::Base
     has_many :tutoring_sessions
     has_many :teachers, through: :tutoring_sessions
+   
+    def self.new_student
+        prompt = TTY::Prompt.new
+        new_student = prompt.ask("Type in your username:")
+        Student.new(name: new_student)
+    end
+
+    def self.returning
+        prompt = TTY::Prompt.new
+        user_name = prompt.ask("What is your name:")
+         user = Student.find_by(name: user_name)  
+         p user.tutoring_sessions
+     end
+
 end
 
 #A Student has many tutoring sessions

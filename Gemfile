@@ -12,4 +12,4 @@ gem "require_all"
 gem "faker"
 
 #gem CLI
-gem 'tty-prompt'
+gem "tty-prompt"
