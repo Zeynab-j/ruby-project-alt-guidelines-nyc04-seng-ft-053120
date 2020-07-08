@@ -14,23 +14,29 @@ class Interface
         Student.returning
        end
     end
-
-    def home_page
-  
-        puts " ██╗ ██╗  ██╗ ██╗      ██████╗ ██████╗ ██████╗ ███████╗    ████████╗██╗   ██╗████████╗ ██████╗ ██████╗      ██╗ ██╗  ██╗ ██╗ 
-        ████████╗████████╗    ██╔════╝██╔═══██╗██╔══██╗██╔════╝    ╚══██╔══╝██║   ██║╚══██╔══╝██╔═══██╗██╔══██╗    ████████╗████████╗
-        ╚██╔═██╔╝╚██╔═██╔╝    ██║     ██║   ██║██║  ██║█████╗         ██║   ██║   ██║   ██║   ██║   ██║██████╔╝    ╚██╔═██╔╝╚██╔═██╔╝
-        ████████╗████████╗    ██║     ██║   ██║██║  ██║██╔══╝         ██║   ██║   ██║   ██║   ██║   ██║██╔══██╗    ████████╗████████╗
-        ╚██╔═██╔╝╚██╔═██╔╝    ╚██████╗╚██████╔╝██████╔╝███████╗       ██║   ╚██████╔╝   ██║   ╚██████╔╝██║  ██║    ╚██╔═██╔╝╚██╔═██╔"
-        next_page = prompt.select("########## HOME PAGE ##########", ["Add Session", "View Schedule" , "Rate Session"])
-        # puts "Add Session"
-        # #add_session would list the tutoring sessions that don't have students assigned
-        # puts "View Schedule"
-        # #go back to returning method and just show schedule
-        # puts "Rate a Session"
-        # #The tutoring session you belong that rating is nil and allow you update it
-     end
-
-
-
 end
+
+#     def self.home_page
+        
+#         puts " ██╗ ██╗  ██╗ ██╗      ██████╗ ██████╗ ██████╗ ███████╗    ████████╗██╗   ██╗████████╗ ██████╗ ██████╗      ██╗ ██╗  ██╗ ██╗ 
+#         ████████╗████████╗    ██╔════╝██╔═══██╗██╔══██╗██╔════╝    ╚══██╔══╝██║   ██║╚══██╔══╝██╔═══██╗██╔══██╗    ████████╗████████╗
+#         ╚██╔═██╔╝╚██╔═██╔╝    ██║     ██║   ██║██║  ██║█████╗         ██║   ██║   ██║   ██║   ██║   ██║██████╔╝    ╚██╔═██╔╝╚██╔═██╔╝
+#         ████████╗████████╗    ██║     ██║   ██║██║  ██║██╔══╝         ██║   ██║   ██║   ██║   ██║   ██║██╔══██╗    ████████╗████████╗
+#         ╚██╔═██╔╝╚██╔═██╔╝    ╚██████╗╚██████╔╝██████╔╝███████╗       ██║   ╚██████╔╝   ██║   ╚██████╔╝██║  ██║    ╚██╔═██╔╝╚██╔═██╔"
+#         next_page = prompt.select("########## HOME PAGE ##########", ["Add Session", "View Schedule" , "Rate Session"])
+#         binding.pry
+
+#         if next_page == "Add Session"
+#             Student.add_session
+#         end
+        
+#         # puts "Add Session"
+#         # #add_session would list the tutoring sessions that don't have students assigned
+#         # puts "View Schedule"
+#         # #go back to returning method and just show schedule
+#         # puts "Rate a Session"
+#         # #The tutoring session you belong that rating is nil and allow you update it
+#      end
+
+
+
