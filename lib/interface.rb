@@ -7,7 +7,7 @@ class Interface
 
     def greeting
          puts "Welcome to CODE Tutor, your one stop shop."
-       answer = prompt.select("Are you a a New Student or Returning Student?", ["New Student", "Returning Studentt"])
+       answer = prompt.select("Are you a a New Student or Returning Student?", ["New Student", "Returning Student"])
        if answer == "New Student"  
         Student.new_student
        else answer == "Returning Student"
