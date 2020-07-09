@@ -1,5 +1,5 @@
 
-#Faker::Educator.subject
+
 Student.destroy_all
 Teacher.destroy_all
 TutoringSession.destroy_all
@@ -33,21 +33,21 @@ TutoringSession.create([
         teacher_id: Teacher.first.id,
         student_id: Student.first.id,
         review: "Terrible",
-        time:   nil,
+        time:   Faker::Time.forward(days: 5,  period: :all, format: :long),
         rating: nil
     },
     {
         teacher_id: Teacher.second.id,
         student_id: Student.second.id,
         review: "OKAY",
-        time:   nil,
+        time:   Faker::Time.forward(days: 5,  period: :all, format: :long),
         rating: nil
     },
     {
         teacher_id: Teacher.second.id,
         student_id: Student.first.id,
-        review: "Terrible",
-        time:   nil,
+        review: "Great!",
+        time:   Faker::Time.forward(days: 5,  period: :all, format: :long),
         rating: nil
     }
 ])
@@ -63,7 +63,7 @@ TutoringSession.create([
         teacher_id: Teacher.all.sample.id,
         student_id: nil,
         review: nil,
-        time: ["1","2","3","4","5"].to_a.sample
+        time: Faker::Time.forward(days: 5,  period: :all, format: :long)
     )
 end
 

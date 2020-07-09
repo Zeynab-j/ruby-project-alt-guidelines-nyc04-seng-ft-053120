@@ -22,7 +22,11 @@ class Student < ActiveRecord::Base
 
     def home_page
       prompt = TTY::Prompt.new
-        puts "CODE TUTOR"
+        puts " ██╗ ██╗  ██╗ ██╗      ██████╗ ██████╗ ██████╗ ███████╗    ████████╗██╗   ██╗████████╗ ██████╗ ██████╗      ██╗ ██╗  ██╗ ██╗ 
+        #         ████████╗████████╗    ██╔════╝██╔═══██╗██╔══██╗██╔════╝    ╚══██╔══╝██║   ██║╚══██╔══╝██╔═══██╗██╔══██╗    ████████╗████████╗
+        #         ╚██╔═██╔╝╚██╔═██╔╝    ██║     ██║   ██║██║  ██║█████╗         ██║   ██║   ██║   ██║   ██║   ██║██████╔╝    ╚██╔═██╔╝╚██╔═██╔╝
+        #         ████████╗████████╗    ██║     ██║   ██║██║  ██║██╔══╝         ██║   ██║   ██║   ██║   ██║   ██║██╔══██╗    ████████╗████████╗
+        #         ╚██╔═██╔╝╚██╔═██╔╝    ╚██████╗╚██████╔╝██████╔╝███████╗       ██║   ╚██████╔╝   ██║   ╚██████╔╝██║  ██║    ╚██╔═██╔╝╚██╔═██╔"
         puts "########## HOME PAGE ##########"
         option = prompt.select("Welcome to CODE Tutor, your one stop shop. What would you like to do today?",
           ["Add Session",
@@ -41,20 +45,32 @@ class Student < ActiveRecord::Base
           end
     end
 
+    def schedule
+
+    end
+
     def add_session
-      puts "hello"
-      # #add_session would list the tutoring sessions that don't have students assigned
-      self.home_page
+      value = TutoringSession.where(student_id: nil)
+      prompt = TTY::Prompt.new
+        selection = prompt.select('Please choose from availability:',  
+          value.map {|s| "#{s.teacher.name} - #{s.teacher.subject} at #{s.time}, #{s.id} "})
+          new_session = selection.split.last
+          self.tutoring_sessions << TutoringSession.where(id: new_session)
+          self.home_page
     end
 
     def view_schedule
-      puts "Schedule"
-      # #go back to returning method and just show schedule
+      schedule = TutoringSession.where(student_id: self)
+      prompt = TTY::Prompt.new
+      selection = prompt.select("######SCHEDULE#####", schedule.map {|s| "#{s.teacher.name} - #{s.teacher.subject} at #{s.time}"})
+      if selection == false
+        "You currently dont have and Tutoring Session Scheduled"
+      end
       self.home_page
     end
 
     def rate_session
-      puts "Session"
+      rating = TutoringSession.where(student_id: self)
       #The tutoring session you belong that rating is nil and allow you update it
       self.home_page
     end
