@@ -28,7 +28,6 @@ class Student < ActiveRecord::Base
 
     def home_page
       prompt = TTY::Prompt.new
-        puts "#### Home Page ####"
         puts "########## HOME PAGE ##########"
         option = prompt.select("Welcome to CODE Tutor, your one stop shop. What would you like to do today?",
           ["Add Session",
@@ -51,7 +50,7 @@ class Student < ActiveRecord::Base
       value = TutoringSession.where(student_id: nil)
       prompt = TTY::Prompt.new
         selection = prompt.select('Please choose from availability:',  
-          value.map {|s| "#{s.teacher.name} - #{s.teacher.subject} at #{s.time}, #{s.id} "})
+          [value.map {|s| "#{s.teacher.name} - #{s.teacher.subject} at #{s.time}, #{s.id} "}, "~*Home Page*~"])
           new_session = selection.split.last
           self.tutoring_sessions << TutoringSession.where(id: new_session)
           self.home_page
@@ -59,21 +58,27 @@ class Student < ActiveRecord::Base
 
     def view_schedule
       schedule = TutoringSession.where(student_id: self)
-      if schedule == true
-         prompt = TTY::Prompt.new
-        selection = prompt.select("######SCHEDULE#####", schedule.map {|s| "#{s.teacher.name} - #{s.teacher.subject} at #{s.time}"})
-      else
+      prompt = TTY::Prompt.new
+      if schedule.empty?
         puts "You currently dont have and Tutoring Session Scheduled."
+        prompt.select("Would you like to back?", ["Home Page"])
+      else
+        #  prompt = TTY::Prompt.new
+        selection = prompt.select("######SCHEDULE#####", 
+        [schedule.map {|s| "#{s.teacher.name} - #{s.teacher.subject} at #{s.time}"}, "~*Home Page*~"])
       end
       self.home_page
     end
 
     def rate_session
       not_rated_sessions = TutoringSession.where(student_id: self.id)
-      if not_rated_sessions == true
-          prompt = TTY::Prompt.new
+      prompt = TTY::Prompt.new
+        if not_rated_sessions.empty?
+            puts "No sessions yet for you."
+            prompt.select("Would you like to back?", ["Home Page"])
+        else
           selection = prompt.select("Select the tutoring session you want to rate:", 
-             not_rated_sessions.map {|s| p "#{s.id} :#{s.teacher.name} - #{s.teacher.subject} at #{s.time}"})
+             not_rated_sessions.map {|s| "#{s.id} :#{s.teacher.name} - #{s.teacher.subject} at #{s.time}"})
               input = prompt.select("Your opinion is important to us, please select a number to rate this session?",
               ["1",
                "2",
@@ -82,12 +87,15 @@ class Student < ActiveRecord::Base
                "5",])
               session = not_rated_sessions.find_by(id: selection.split.first)
             session.update(rating: input)
-      else
-          puts "No sessions yet for you."
-      end
-      home_page
+        end
+      self.home_page
   end
    
+  # def home
+  #   puts "~*Home page*~"
+  #   self.home_page
+  # end
+
 
 end
 
